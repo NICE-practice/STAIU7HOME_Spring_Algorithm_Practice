@@ -1,8 +1,8 @@
 # STAIU7HOME_Spring_Algorithm_Practice
 
-Возможные решения для задач из практики 2020
+Практика "Углубленный Си", весна 2020
 
-
+# Отчеты (`doc` - Документация; `bag` - багрепорт)
 ## NUM63RSgame
 + [NUM63RSgame_doc](https://github.com/NICE-practice/STAIU7HOME_Spring_Algorithm_Practice/wiki/NUM63RSgame_doc)
 
