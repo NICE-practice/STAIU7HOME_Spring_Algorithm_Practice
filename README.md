@@ -4,7 +4,7 @@
 
 
 ## NUM63RSgame
-+ [NUM63RSgame_doc](NUM63RSgame_doc)
++ [NUM63RSgame_doc](https://github.com/kpirap18/STAIU7HOME_Spring_Algorithm_Practice/wiki/NUM63RSgame_doc)
 
 + [NUM63RSgame_bag](NUM63RSgame_bag)
 
