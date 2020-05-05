@@ -1,7 +1,7 @@
 int numbers_game(int min, int max)
 {
     int number = min;
-    for (int i = min + 1; i < max; ++i)
+    for (int i = min + 1; i <= max; ++i)
     {
         int number_process = number, i_process = i;
         while(number_process && i_process)
