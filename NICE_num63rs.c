@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int numbers_game(int min, int max)
 {
     int number = min;
