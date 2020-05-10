@@ -47,19 +47,19 @@ int xogame(char **bf, const int field_size, const char symb)
             if (enemys_marks == 2)
             {
                 result = first_check(arr, field_size, 1);
-                if (result > 0)
+                if (result >= 0)
                     return result;
                 result = first_check(arr, field_size, -1);
-                if (result > 0)
+                if (result >= 0)
                     return result;
             }
             if (enemys_marks == 3)
             {
                 result = first_check(arr, field_size, 1);
-                if (result > 0)
+                if (result >= 0)
                     return result;
                 result = first_check(arr, field_size, -1);
-                if (result > 0)
+                if (result >= 0)
                     return result;
                 if (arr[7] == -1)
                     return 5;
@@ -92,7 +92,7 @@ int xogame(char **bf, const int field_size, const char symb)
                 else
                 {
                     result = first_check(arr, field_size, -1);
-                    if (result > 0)
+                    if (result >= 0)
                         return result;
                     return 6;
                 }
@@ -100,14 +100,245 @@ int xogame(char **bf, const int field_size, const char symb)
             else
             {
                 result = first_check(arr, field_size, 1);
-                if (result > 0)
+                if (result >= 0)
                     return result;
                 result = first_check(arr, field_size, -1);
-                if (result > 0)
+                if (result >= 0)
                     return result;
                 for (int i = 0; i < 9; i++)
                     if (arr[i] == 0)
                         return i;
+            }
+        }
+    }
+    else
+    {
+        if (turn == 1)
+        {
+            if (enemys_marks == 0)
+                return 12;
+            if (enemys_marks == 1)
+            {
+                //главная дианональ
+                int flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + i] == -1)
+                        flag = 0;
+                if (flag)
+                    return 0;
+                return 4;
+            }
+            if (enemys_marks == 2)
+            {
+                //главная дианональ
+                int flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + i] == -1)
+                        flag = 0;
+                if (flag)
+                    return 24;
+                //побочная
+                flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + (field_size - i - 1)] == -1)
+                        flag = 0;
+                if (flag)
+                    return 20;
+                //ценртальный столбец
+                flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + 2] == -1)
+                        flag = 0;
+                if (flag)
+                    return 2;
+                //центральная строка
+                flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i + field_size*2] == -1)
+                        flag = 0;
+                if (flag)
+                    return 10;
+                //случайный пустой
+                for (int i = 0; i < field_size*field_size; i++)
+                    if (arr[i] == 0)
+                        return i;
+            }
+            if (enemys_marks == 3)
+            {
+                //главная дианональ
+                int flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + i] == -1)
+                        flag = 0;
+                if (flag)
+                    return 6;
+                //побочная
+                flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + (field_size - i - 1)] == -1)
+                        flag = 0;
+                if (flag)
+                    return 18;
+                //ценртальный столбец
+                flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + 2] == -1)
+                        flag = 0;
+                if (flag)
+                    return 7;
+                //центральная строка
+                flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i + field_size*2] == -1)
+                        flag = 0;
+                if (flag)
+                    return 11;
+                //случайный пустой
+                for (int i = 0; i < field_size*field_size; i++)
+                    if (arr[i] == 0)
+                        return i;
+            }
+            if (enemys_marks == 4)
+            {
+                result = first_check(arr, field_size, 1);
+                if (result >= 0)
+                    return result;
+                //ценртальный столбец
+                int flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i*field_size + 2] == -1)
+                        flag = 0;
+                if (flag)
+                    return 17;
+                //центральная строка
+                flag = 1;
+                for (int i = 0; i < field_size; i++)
+                    if (arr[i + field_size*2] == -1)
+                        flag = 0;
+                if (flag)
+                    return 13;
+                //случайный пустой
+                for (int i = 0; i < field_size*field_size; i++)
+                    if (arr[i] == 0)
+                        return i;
+            }
+            else
+            {
+                result = first_check(arr, field_size, 1);
+                if (result >= 0)
+                    return result;
+                result = first_check(arr, field_size, -1);
+                if (result >= 0)
+                    return result;
+                for (int i = 0; i < field_size * field_size; i++)
+                    if (arr[i] == 0)
+                        return i;
+            }
+        }
+
+        else
+        {
+            if (enemys_marks == 1)
+            {
+                if (arr[12] == 0)
+                    return 12;
+                else
+                    return 0;
+            }
+            if (enemys_marks == 2)
+            {
+                if (arr[12] == 1)
+                {
+                    //главная дианональ
+                    int flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i*field_size + i] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 0;
+                    //побочная
+                    flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i*field_size + (field_size - i - 1)] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 4;
+                    //ценртальный столбец
+                    flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i*field_size + 2] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 2;
+                    //центральная строка
+                    flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i + field_size*2] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 10;
+
+                }
+                else
+                {
+                    if (arr[4] == 0)
+                        return 4;
+                    else
+                        return 20;
+                }
+            }
+            if (enemys_marks == 3)
+            {
+                if (arr[12] == 1)
+                {
+                    //главная дианональ
+                    int flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i*field_size + i] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 24;
+                    //побочная
+                    flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i*field_size + (field_size - i - 1)] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 20;
+                    //ценртальный столбец
+                    flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i*field_size + 2] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 7;
+                    //центральная строка
+                    flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i + field_size*2] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 11;
+                }
+                else
+                {
+                    int flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 1;
+                    flag = 1;
+                    for (int i = 0; i < field_size; i++)
+                        if (arr[i*field_size] == -1)
+                            flag = 0;
+                    if (flag)
+                        return 5;
+                    for (int i = 0; i < field_size * field_size; i++)
+                        if (arr[i] == 0)
+                            return i;
+                }
+
             }
         }
     }
@@ -151,3 +382,5 @@ int first_check(int arr[25], int field_size, int how)
                 return i*field_size + (field_size - i - 1);
     return result;
 }
+
+
