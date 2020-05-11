@@ -95,9 +95,6 @@ int xogame(char **bf, const int field_size, const char symb)
                     //крестики только по углам
                     if ((arr[0] == 1) || (arr[2] == 1) || (arr[6] == 1) || (arr[8] == 1))
                         return 1;
-                    //крестики только по бокам
-                    return 6;
-
                 }
             }
             else
@@ -517,100 +514,113 @@ int main(void)
 
     char *p_test_3x3_1[3];
     trasform(p_test_3x3_1, *test_3x3_1, 3);
-    // test 1
+
+    // test 1 3x3
     if (xogame(p_test_3x3_1, 3, 'X') == 4)
         successful_tests++;
     else
-        printf("TEST 1 FAILED\n");
-    // test 2
+        printf("TEST 3x3 1 FAILED\n");
+
+    // test 2 3x3
     test_3x3_1[1][1] = 'X';
     test_3x3_1[0][0] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 6)
         successful_tests++;
     else
-        printf("TEST 2 FAILED\n");
-    // test 3
+        printf("TEST 3x3 2 FAILED\n");
+
+    // test 3 3x3
     test_3x3_1[2][0] = 'X';
     test_3x3_1[0][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 1)
         successful_tests++;
     else
-        printf("TEST 3 FAILED\n");
-    // test 4
+        printf("TEST 3x3 3 FAILED\n");
+
+    // test 4 3x3
     test_3x3_1[0][1] = 'X';
     test_3x3_1[2][1] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 5)
         successful_tests++;
     else
-        printf("TEST 4 FAILED\n");
-    // test 5
+        printf("TEST 3x3 4 FAILED\n");
+
+    // test 5 3x3
     test_3x3_1[1][2] = 'X';
     test_3x3_1[2][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 3)
         successful_tests++;
     else
-        printf("TEST 5 FAILED\n");
+        printf("TEST 3x3 5 FAILED\n");
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_1[i][j] = ' ';
-    // test 6
+
+    // test 6 3x3
     test_3x3_1[1][1] = 'X';
     test_3x3_1[2][0] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 8)
         successful_tests++;
     else
-        printf("TEST 6 FAILED\n");
-    // test 7
+        printf("TEST 3x3 6 FAILED\n");
+
+    // test 7 3x3
     test_3x3_1[2][2] = 'X';
     test_3x3_1[0][0] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 3)
         successful_tests++;
     else
-        printf("TEST 7 FAILED\n");
-    // test 8
+        printf("TEST 3x3 7 FAILED\n");
+
+    // test 8 3x3
     test_3x3_1[1][0] = 'X';
     test_3x3_1[1][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 1)
         successful_tests++;
     else
-        printf("TEST 8 FAILED\n");
-    // test 9
+        printf("TEST 3x3 8 FAILED\n");
+
+    // test 9 3x3
     test_3x3_1[0][1] = 'X';
     test_3x3_1[2][1] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 2)
         successful_tests++;
     else
-        printf("TEST 9 FAILED\n");
+        printf("TEST 3x3 9 FAILED\n");
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_1[i][j] = ' ';
-    // test 10
+
+    // test 10 3x3
     test_3x3_1[1][1] = 'X';
     test_3x3_1[1][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 0)
         successful_tests++;
     else
-        printf("TEST 10 FAILED\n");
-    // test 11
+        printf("TEST 3x3 10 FAILED\n");
+
+    // test 11 3x3
     test_3x3_1[0][0] = 'X';
     test_3x3_1[2][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 2)
         successful_tests++;
     else
-        printf("TEST 11 FAILED\n");
-    // test 12
+        printf("TEST 3x3 11 FAILED\n");
+
+    // test 12 3x3
     test_3x3_1[0][2] = 'X';
     test_3x3_1[0][1] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 6)
         successful_tests++;
     else
-        printf("TEST 12 FAILED\n");
+        printf("TEST 3x3 12 FAILED\n");
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_1[i][j] = ' ';
-    // test 13
+
+    // test 13 3x3
     test_3x3_1[1][1] = 'X';
     test_3x3_1[0][1] = 'O';
     test_3x3_1[0][0] = 'X';
@@ -618,8 +628,13 @@ int main(void)
     if (xogame(p_test_3x3_1, 3, 'X') == 8)
         successful_tests++;
     else
-        printf("TEST 13 FAILED\n");
-    // test 14
+        printf("TEST 3x3 13 FAILED\n");
+
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            test_3x3_1[i][j] = ' ';
+
+    // test 14 3x3
     test_3x3_1[1][1] = 'X';
     test_3x3_1[0][0] = 'O';
     test_3x3_1[2][0] = 'X';
@@ -629,7 +644,7 @@ int main(void)
     if (xogame(p_test_3x3_1, 3, 'X') == 7)
         successful_tests++;
     else
-        printf("TEST 14 FAILED\n %d",xogame(p_test_3x3_1, 3, 'X'));//!!!!!
+        printf("TEST 3x3 14 FAILED\n");
     char test_3x3_2[3][3];
 
     for (int i = 0; i < 3; i++)
@@ -638,146 +653,175 @@ int main(void)
 
     char *p_test_3x3_2[3];
     trasform(p_test_3x3_2, *test_3x3_2, 3);
-    // test 13
+
+    // test 15 3x3
     test_3x3_2[1][0] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 4)
         successful_tests++;
     else
-        printf("TEST 15 FAILED\n");
-    // tsst 14
+        printf("TEST 3x3 15 FAILED\n");
+
+    // tsst 16 3x3
     test_3x3_2[1][1] = 'O';
     test_3x3_2[1][2] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 6)
+    if (xogame(p_test_3x3_2, 3, 'O') == 0)
         successful_tests++;
     else
-        printf("TEST 16 FAILED\n");
-    // test 15
-    test_3x3_2[2][0] = 'O';
-    test_3x3_2[0][2] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 8)
+        printf("TEST 3x3 16 FAILED\n ");
+
+    // test 17 3x3
+    test_3x3_2[0][0] = 'O';
+    test_3x3_2[2][2] = 'X';
+    if (xogame(p_test_3x3_2, 3, 'O') == 2)
         successful_tests++;
     else
-        printf("TEST 17 FAILED\n");
-    // test 16
-    test_3x3_2[2][2] = 'O';
-    test_3x3_2[0][0] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 7)
+        printf("TEST 3x3 17 FAILED\n");
+
+    // test 18 3x3
+    test_3x3_2[0][2] = 'O';
+    test_3x3_2[2][0] = 'X';
+    if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
-        printf("TEST 18 FAILED\n");
+        printf("TEST 3x3 18 FAILED\n");
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_2[i][j] = ' ';
-    // test 17
+
+    // test 19 3x3
     test_3x3_2[1][1] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 0)
         successful_tests++;
     else
-        printf("TEST 19 FAILED\n");
-    // test 18
+        printf("TEST 3x3 19 FAILED\n");
+
+    // test 20 3x3
     test_3x3_2[0][0] = 'O';
     test_3x3_2[2][2] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 6)
         successful_tests++;
     else
-        printf("TEST 20 FAILED\n");
-    // test 19
+        printf("TEST 3x3 20 FAILED\n");
+
+    // test 21 3x3
     test_3x3_2[2][0] = 'O';
     test_3x3_2[1][0] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 5)
         successful_tests++;
     else
-        printf("TEST 21 FAILED\n");
-    // test 20
+        printf("TEST 3x3 21 FAILED\n");
+
+    // test 22 3x3
     test_3x3_2[1][2] = 'O';
     test_3x3_2[0][1] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 7)
         successful_tests++;
     else
-        printf("TEST 22 FAILED\n");
+        printf("TEST 3x3 22 FAILED\n");
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_2[i][j] = ' ';
-    // test 21
+
+    // test 23 3x3
     test_3x3_2[1][1] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 0)
         successful_tests++;
     else
-        printf("TEST 23 FAILED\n");
-    // test 22
+        printf("TEST 3x3 23 FAILED\n");
+
+    // test 24 3x3
     test_3x3_2[0][0] = 'O';
     test_3x3_2[2][0] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 2)
         successful_tests++;
     else
-        printf("TEST 24 FAILED\n");
-    // test 23
+        printf("TEST 3x3 24 FAILED\n");
+
+    // test 25 3x3
     test_3x3_2[0][2] = 'O';
     test_3x3_2[0][1] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 7)
         successful_tests++;
     else
-        printf("TEST 25 FAILED\n");
-    // test 24
+        printf("TEST 3x3 25 FAILED\n");
+    // test 26 3x3
     test_3x3_2[2][1] = 'O';
     test_3x3_2[1][0] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 5)
         successful_tests++;
     else
-        printf("TEST 26 FAILED\n");
+        printf("TEST 3x3 26 FAILED\n");
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_2[i][j] = ' ';
-    // test 25
+
+    // test 27 3x3
     test_3x3_2[0][0] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 4)
         successful_tests++;
     else
-        printf("TEST 27 FAILED\n");
-    // test 26
+        printf("TEST 3x3 27 FAILED\n");
+
+    // test 28 3x3
     test_3x3_2[1][1] = 'O';
     test_3x3_2[2][0] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 3)
         successful_tests++;
     else
-        printf("TEST 28 FAILED\n");
-    // test 27
+        printf("TEST 3x3 28 FAILED\n");
+
+    // test 29 3x3
     test_3x3_2[1][0] = 'O';
     test_3x3_2[1][2] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
-        printf("TEST 29 FAILED\n");
-    // test 28
+        printf("TEST 3x3 29 FAILED\n");
+
+    // test 30 3x3
     test_3x3_2[0][1] = 'O';
     test_3x3_2[2][1] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 8)
         successful_tests++;
     else
-        printf("TEST 30 FAILED");
+        printf("TEST 3x3 30 FAILED");
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_2[i][j] = ' ';
-    // test 31
+
+    // test 31 3x3
     test_3x3_2[0][0] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 4)
         successful_tests++;
     else
-        printf("TEST 31 FAILED\n");
-    // test 32
+        printf("TEST 3x3 31 FAILED\n");
+
+    // test 32 3x3
     test_3x3_2[1][1] = 'O';
     test_3x3_2[0][2] = 'X';
     if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
-        printf("TEST 32 FAILED");
+        printf("TEST 3x3 32 FAILED");
+
+    /*char test_5x5_1[5][5];
+
+    for (int i = 0; i < 5; i++)
+        for (int j = 0; j < 5; j++)
+            test_5x5_1[i][j] = ' ';
+
+    char *p_test_5x5_1[3];
+    trasform(p_test_3x3_2, *test_3x3_2, 3);
+    
+    // test 5x5 1
+    */
+
 
     printf("%d / 32 TESTS SUCCESSFUL\n", successful_tests);
     return 0;
 }
-
 
