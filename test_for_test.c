@@ -91,10 +91,16 @@ int xogame(char **bf, const int field_size, const char symb)
                 }
                 else
                 {
+                    //оборона
                     result = first_check(arr, field_size, -1);
                     if (result >= 0)
                         return result;
+                    //крестики только по углам
+                    if ((arr[0] == 1) || (arr[2] == 1) || (arr[6] == 1) || (arr[8] == 1))
+                        return 1;
+                    //крестики только по бокам
                     return 6;
+
                 }
             }
             else
@@ -151,17 +157,6 @@ int xogame(char **bf, const int field_size, const char symb)
                         flag = 0;
                 if (flag)
                     return 2;
-                //центральная строка
-                flag = 1;
-                for (int i = 0; i < field_size; i++)
-                    if (arr[i + field_size*2] == -1)
-                        flag = 0;
-                if (flag)
-                    return 10;
-                //случайный пустой
-                for (int i = 0; i < field_size*field_size; i++)
-                    if (arr[i] == 0)
-                        return i;
             }
             if (enemys_marks == 3)
             {
@@ -192,11 +187,7 @@ int xogame(char **bf, const int field_size, const char symb)
                     if (arr[i + field_size*2] == -1)
                         flag = 0;
                 if (flag)
-                    return 11;
-                //случайный пустой
-                for (int i = 0; i < field_size*field_size; i++)
-                    if (arr[i] == 0)
-                        return i;
+                    return 10;
             }
             if (enemys_marks == 4)
             {
@@ -216,7 +207,7 @@ int xogame(char **bf, const int field_size, const char symb)
                     if (arr[i + field_size*2] == -1)
                         flag = 0;
                 if (flag)
-                    return 13;
+                    return 11;
                 //случайный пустой
                 for (int i = 0; i < field_size*field_size; i++)
                     if (arr[i] == 0)
@@ -270,14 +261,6 @@ int xogame(char **bf, const int field_size, const char symb)
                             flag = 0;
                     if (flag)
                         return 2;
-                    //центральная строка
-                    flag = 1;
-                    for (int i = 0; i < field_size; i++)
-                        if (arr[i + field_size*2] == -1)
-                            flag = 0;
-                    if (flag)
-                        return 10;
-
                 }
                 else
                 {
@@ -318,22 +301,25 @@ int xogame(char **bf, const int field_size, const char symb)
                         if (arr[i + field_size*2] == -1)
                             flag = 0;
                     if (flag)
-                        return 11;
+                        return 10;
                 }
                 else
                 {
+                    //верхняя строка
                     int flag = 1;
                     for (int i = 0; i < field_size; i++)
                         if (arr[i] == -1)
                             flag = 0;
                     if (flag)
                         return 1;
+                    //левый столбец
                     flag = 1;
                     for (int i = 0; i < field_size; i++)
                         if (arr[i*field_size] == -1)
                             flag = 0;
                     if (flag)
                         return 5;
+                    //случайный
                     for (int i = 0; i < field_size * field_size; i++)
                         if (arr[i] == 0)
                             return i;
@@ -344,6 +330,7 @@ int xogame(char **bf, const int field_size, const char symb)
     }
     return 0;
 }
+
 int first_check(int arr[25], int field_size, int how)
 {
     int result = -1;
@@ -399,51 +386,63 @@ int main(void)
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_1[i][j] = ' ';
-
+    // первый ходит 3x3
     char *p_test_3x3_1[3];
     trasform(p_test_3x3_1, *test_3x3_1, 3);
-
+    //1
     if (xogame(p_test_3x3_1, 3, 'X') == 4)
         successful_tests++;
-
+    //6
     test_3x3_1[1][1] = 'X';
     test_3x3_1[0][0] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 6)
         successful_tests++;
-
+    //22
     test_3x3_1[2][0] = 'X';
     test_3x3_1[0][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 1)
         successful_tests++;
-
+    //34
     test_3x3_1[0][1] = 'X';
     test_3x3_1[2][1] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 5)
         successful_tests++;
 
+    //38 X win
+    test_3x3_1[1][2] = 'X';
+    test_3x3_1[2][2] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 3)
+        successful_tests++;
+
+
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_1[i][j] = ' ';
-
+    //9
     test_3x3_1[1][1] = 'X';
     test_3x3_1[2][0] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 8)
         successful_tests++;
-
+    //25
     test_3x3_1[2][2] = 'X';
     test_3x3_1[0][0] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 3)
         successful_tests++;// не проходит, первый.jpg второй ряд, вторая строчка(второй столбе)
-
+    //37
     test_3x3_1[1][0] = 'X';
     test_3x3_1[1][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 1)
+        successful_tests++;
+    //41
+    test_3x3_1[0][1] = 'X';
+    test_3x3_1[2][1] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 2)
         successful_tests++;
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             test_3x3_1[i][j] = ' ';
-
+    //4
     test_3x3_1[1][1] = 'X';
     test_3x3_1[1][2] = 'O';
     if (xogame(p_test_3x3_1, 3, 'X') == 0)
@@ -477,6 +476,7 @@ int main(void)
     if (xogame(p_test_3x3_2, 3, 'O') == 6)
         successful_tests++;
 
-    printf("%d / 12 TESTS SUCCESSFUL\n", successful_tests);
+    printf("%d / 14 TESTS SUCCESSFUL\n", successful_tests);
     return 0;
 }
+
