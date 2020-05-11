@@ -137,19 +137,8 @@ int xogame(char **bf, const int field_size, const char symb)
                 if (flag)
                     return 24;
                 //побочная
-                flag = 1;
-                for (int i = 0; i < field_size; i++)
-                    if (arr[i*field_size + (field_size - i - 1)] == -1)
-                        flag = 0;
-                if (flag)
-                    return 20;
-                //центральный столбец
-                flag = 1;
-                for (int i = 0; i < field_size; i++)
-                    if (arr[i*field_size + 2] == -1)
-                        flag = 0;
-                if (flag)
-                    return 2;
+                return 20;
+
             }
             if (enemys_marks == 3)
             {
@@ -167,24 +156,34 @@ int xogame(char **bf, const int field_size, const char symb)
                         flag = 0;
                 if (flag)
                     return 8;
+                 //центральный столбец
+                return 2;
+                
+            }
+            if (enemys_marks == 4)
+            {
+                result = first_check(arr, field_size, 1);
+                if (result >= 0)
+                    return result;
+                result = first_check(arr, field_size, -1);
+                if (result >= 0)
+                    return result;
                 //ценртальный столбец
-                flag = 1;
+                int flag = 1;
                 for (int i = 0; i < field_size; i++)
                     if (arr[i*field_size + 2] == -1)
                         flag = 0;
                 if (flag)
                     return 7;
                 //центральная строка
-                flag = 1;
-                for (int i = 0; i < field_size; i++)
-                    if (arr[i + field_size*2] == -1)
-                        flag = 0;
-                if (flag)
-                    return 10;
+                return 10;
             }
-            if (enemys_marks == 4)
+            if (enemys_marks == 5)
             {
                 result = first_check(arr, field_size, 1);
+                if (result >= 0)
+                    return result;
+                result = first_check(arr, field_size, -1);
                 if (result >= 0)
                     return result;
                 //ценртальный столбец
@@ -195,7 +194,7 @@ int xogame(char **bf, const int field_size, const char symb)
                 if (flag)
                     return 17;
                 //центральная строка
-                flag = 1;
+                int flag = 1;
                 for (int i = 0; i < field_size; i++)
                     if (arr[i + field_size*2] == -1)
                         flag = 0;
@@ -206,7 +205,7 @@ int xogame(char **bf, const int field_size, const char symb)
                     if (arr[i] == 0)
                         return i;
             }
-            if (enemys_marks == 5)
+            if (enemys_marks == 6)
             {
                 result = first_check(arr, field_size, 1);
                 if (result >= 0)
