@@ -91,10 +91,16 @@ int xogame(char **bf, const int field_size, const char symb)
                 }
                 else
                 {
+                    //оборона
                     result = first_check(arr, field_size, -1);
                     if (result >= 0)
                         return result;
+                    //крестики только по углам
+                    if ((arr[0] == 1) || (arr[2] == 1) || (arr[6] == 1) || (arr[8] == 1))
+                        return 1;
+                    //крестики только по бокам
                     return 6;
+                    
                 }
             }
             else
@@ -324,6 +330,7 @@ int xogame(char **bf, const int field_size, const char symb)
     }
     return 0;
 }
+
 int first_check(int arr[25], int field_size, int how)
 {
     int result = -1;
