@@ -1020,6 +1020,8 @@ int main(void)
         successful_tests1++;
     else
         printf("TEST 5x5 71 FAILED\n");
+    
+    // new game
     for (int i = 0; i < 5; i++)
         for (int j = 0; j < 5; j++)
             test_5x5_2[i][j] = ' ';
