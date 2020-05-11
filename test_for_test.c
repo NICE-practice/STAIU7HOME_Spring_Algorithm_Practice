@@ -394,73 +394,89 @@ void trasform(char **a, char *buf, int n)
 int main(void)
 {
     int successful_tests = 0;
-    char test_3x3[3][3];
+    char test_3x3_1[3][3];
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
-            test_3x3[i][j] = ' ';
+            test_3x3_1[i][j] = ' ';
 
-    char *p_test_3x3[3];
-    trasform(p_test_3x3, *test_3x3, 3);
+    char *p_test_3x3_1[3];
+    trasform(p_test_3x3_1, *test_3x3_1, 3);
 
-    if (xogame(p_test_3x3, 3, 'X') == 4)
+    if (xogame(p_test_3x3_1, 3, 'X') == 4)
         successful_tests++;
 
-    test_3x3[1][1] = 'X';
-    test_3x3[0][0] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 6)
+    test_3x3_1[1][1] = 'X';
+    test_3x3_1[0][0] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 6)
         successful_tests++;
 
-    test_3x3[2][0] = 'X';
-    test_3x3[0][2] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 1)
+    test_3x3_1[2][0] = 'X';
+    test_3x3_1[0][2] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 1)
         successful_tests++;
 
-    test_3x3[0][1] = 'X';
-    test_3x3[2][1] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 5)
+    test_3x3_1[0][1] = 'X';
+    test_3x3_1[2][1] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 5)
         successful_tests++;
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
-            test_3x3[i][j] = ' ';
+            test_3x3_1[i][j] = ' ';
 
-    test_3x3[1][1] = 'X';
-    test_3x3[2][0] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 8)
+    test_3x3_1[1][1] = 'X';
+    test_3x3_1[2][0] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 8)
         successful_tests++;
 
-    test_3x3[2][2] = 'X';
-    test_3x3[0][0] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 3)
+    test_3x3_1[2][2] = 'X';
+    test_3x3_1[0][0] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 3)
         successful_tests++;// не проходит, первый.jpg второй ряд, вторая строчка(второй столбе)
 
-    test_3x3[1][0] = 'X';
-    test_3x3[1][2] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 1)
+    test_3x3_1[1][0] = 'X';
+    test_3x3_1[1][2] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 1)
         successful_tests++;
 
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
-            test_3x3[i][j] = ' ';
+            test_3x3_1[i][j] = ' ';
 
-    test_3x3[1][1] = 'X';
-    test_3x3[1][2] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 0)
+    test_3x3_1[1][1] = 'X';
+    test_3x3_1[1][2] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 0)
         successful_tests++;
 
-    test_3x3[0][0] = 'X';
-    test_3x3[2][2] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 2)
+    test_3x3_1[0][0] = 'X';
+    test_3x3_1[2][2] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 2)
         successful_tests++; // вроде по рисунку 2, а так 6
 
-
-    test_3x3[0][2] = 'X';
-    test_3x3[0][1] = 'O';
-    if (xogame(p_test_3x3, 3, 'X') == 6)
+    test_3x3_1[0][2] = 'X';
+    test_3x3_1[0][1] = 'O';
+    if (xogame(p_test_3x3_1, 3, 'X') == 6)
         successful_tests++;
 
+    char test_3x3_2[3][3];
 
-    printf("%d / 10 TESTS SUCCESSFUL\n", successful_tests);
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            test_3x3_2[i][j] = ' ';
+
+    char *p_test_3x3_2[3];
+    trasform(p_test_3x3_2, *test_3x3_2, 3);
+
+    test_3x3_2[1][0] = 'X';
+    if (xogame(p_test_3x3_2, 3, 'O') == 4)
+        successful_tests++;
+
+    test_3x3_2[1][1] = 'O';
+    test_3x3_2[1][2] = 'X';
+    if (xogame(p_test_3x3_2, 3, 'O') == 6)
+        successful_tests++;
+
+    printf("%d / 12 TESTS SUCCESSFUL\n", successful_tests);
     return 0;
 }
