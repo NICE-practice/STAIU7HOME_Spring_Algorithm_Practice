@@ -58,9 +58,6 @@ int xogame(char **bf, const int field_size, const char symb)
                 result = first_check(arr, field_size, 1);
                 if (result >= 0)
                     return result;
-                result = first_check(arr, field_size, -1);
-                if (result >= 0)
-                    return result;
                 if (arr[7] == -1)
                     return 5;
                 return 1;
