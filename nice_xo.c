@@ -95,9 +95,6 @@ int xogame(char **bf, const int field_size, const char symb)
                     //крестики только по углам
                     if ((arr[0] == 1) || (arr[2] == 1) || (arr[6] == 1) || (arr[8] == 1))
                         return 1;
-                    //крестики только по бокам
-                    return 6;
-
                 }
             }
             else
