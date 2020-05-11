@@ -443,7 +443,7 @@ int xogame(char **bf, const int field_size, const char symb)
             }
         }
     }
-    return 0;
+    return -1;
 }
 int first_check(int arr[25], int field_size, int how)
 {
