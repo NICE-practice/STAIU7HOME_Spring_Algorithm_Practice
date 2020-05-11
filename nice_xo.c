@@ -84,7 +84,7 @@ int xogame(char **bf, const int field_size, const char symb)
                 if (arr[4] == -1)
                 {
                     for (int i = 1; i < 8; i++)
-                        if (arr[i] == -1)
+                        if ((arr[i] == -1) && (i != 4))
                             return (8 - i);
                     return 6;
 
