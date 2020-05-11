@@ -484,7 +484,7 @@ int first_check(int arr[25], int field_size, int how)
         if (sum_column == how * (field_size - 1))
             for (int str = 0; str < field_size; str++)
                 if (arr[i + str * field_size] == 0)
-                    return i * field_size;
+                    return i + str * field_size;
         if (sum_row == how * (field_size - 1))
             for (int col = 0; col < field_size; col++)
                 if (arr[i * field_size + col] == 0)
