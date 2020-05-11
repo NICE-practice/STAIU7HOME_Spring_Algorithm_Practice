@@ -151,17 +151,6 @@ int xogame(char **bf, const int field_size, const char symb)
                         flag = 0;
                 if (flag)
                     return 2;
-                //центральная строка
-                flag = 1;
-                for (int i = 0; i < field_size; i++)
-                    if (arr[i + field_size*2] == -1)
-                        flag = 0;
-                if (flag)
-                    return 10;
-                //случайный пустой
-                for (int i = 0; i < field_size*field_size; i++)
-                    if (arr[i] == 0)
-                        return i;
             }
             if (enemys_marks == 3)
             {
@@ -192,11 +181,7 @@ int xogame(char **bf, const int field_size, const char symb)
                     if (arr[i + field_size*2] == -1)
                         flag = 0;
                 if (flag)
-                    return 11;
-                //случайный пустой
-                for (int i = 0; i < field_size*field_size; i++)
-                    if (arr[i] == 0)
-                        return i;
+                    return 10;
             }
             if (enemys_marks == 4)
             {
@@ -216,7 +201,7 @@ int xogame(char **bf, const int field_size, const char symb)
                     if (arr[i + field_size*2] == -1)
                         flag = 0;
                 if (flag)
-                    return 13;
+                    return 11;
                 //случайный пустой
                 for (int i = 0; i < field_size*field_size; i++)
                     if (arr[i] == 0)
@@ -270,14 +255,6 @@ int xogame(char **bf, const int field_size, const char symb)
                             flag = 0;
                     if (flag)
                         return 2;
-                    //центральная строка
-                    flag = 1;
-                    for (int i = 0; i < field_size; i++)
-                        if (arr[i + field_size*2] == -1)
-                            flag = 0;
-                    if (flag)
-                        return 10;
-
                 }
                 else
                 {
@@ -318,22 +295,25 @@ int xogame(char **bf, const int field_size, const char symb)
                         if (arr[i + field_size*2] == -1)
                             flag = 0;
                     if (flag)
-                        return 11;
+                        return 10;
                 }
                 else
                 {
+                    //верхняя строка
                     int flag = 1;
                     for (int i = 0; i < field_size; i++)
                         if (arr[i] == -1)
                             flag = 0;
                     if (flag)
                         return 1;
+                    //левый столбец
                     flag = 1;
                     for (int i = 0; i < field_size; i++)
                         if (arr[i*field_size] == -1)
                             flag = 0;
                     if (flag)
                         return 5;
+                    //случайный
                     for (int i = 0; i < field_size * field_size; i++)
                         if (arr[i] == 0)
                             return i;
