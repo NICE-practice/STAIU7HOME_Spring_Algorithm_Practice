@@ -35,7 +35,7 @@ int max_col(int a[6][6], int j, int n)
     for (int i = 0; i < n; i++)
         if (a[i][j] > max)
         {
-            max_i = 0;
+            max_i = i;
             max = a[i][j];
         }
     for (int i = max_i - 1; i > 0; i--)
