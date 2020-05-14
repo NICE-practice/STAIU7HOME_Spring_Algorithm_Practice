@@ -3,6 +3,7 @@
 
 int max_row(int a[6][6], int i, int n);
 int max_col(int a[6][6], int j, int n);
+
 char teen48game(matrix_t matrix)
 {
     char swipe = 0;
@@ -10,8 +11,11 @@ char teen48game(matrix_t matrix)
     int l[6][6] = { 0 };
     int r[6][6] = { 0 };
     int u[6][6] = { 0 };
+    int score_d = 0, score_l = 0, score_r = 0, score_u = 0;
+    char flag_d = 0, flag_l = 0, flag_r = 0, flag_u = 0;
     int size = matrix.rows;
 
+    // zeroing
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -23,14 +27,11 @@ char teen48game(matrix_t matrix)
         }
     }
 
-    int score_d = 0, score_l = 0, score_r = 0, score_u = 0;
-    char flag_d = 0, flag_l = 0, flag_r = 0, flag_u = 0;
-
     if (d[size - 1][0] == 0)
     {
         int max_c = max_col(d, 0, size);
         int max_r = max_row(d, size - 1, size);
-        if ((max_c != 0) && (max_c > max_r))
+        if ((max_c != 0) && (max_c >= max_r))
         {
             swipe = 'd';
             return swipe;
@@ -41,7 +42,8 @@ char teen48game(matrix_t matrix)
             return swipe;
         }
     }
-    // turn
+
+    // shift
     for (int k = 0; k < size; k++)
     {
         for (int i = 0; i < size - 1; i++)
@@ -148,12 +150,12 @@ char teen48game(matrix_t matrix)
         }
     }
 
-
+    // swipe
     if (((flag_d == 1) && (score_d >= score_l)) || \
             ((flag_d == 0) && (score_d >= score_l) && (score_d != 0)))
         swipe = 'd';
     else if (((flag_d == 1) && (flag_l == 1) && (score_l > score_d)) || \
-        ((flag_d == 0) && (flag_l == 1) && (score_d == 0)) || \
+             ((flag_d == 0) && (flag_l == 1) && (score_d == 0)) || \
              ((flag_l == 0) && (flag_r == 1) && (score_l != 0)) || \
              ((flag_l == flag_r) && (score_l == score_r) && (score_l != 0)))
         swipe = 'l';
@@ -164,34 +166,39 @@ char teen48game(matrix_t matrix)
 
     return swipe;
 }
+
 int max_row(int a[6][6], int i, int n)
 {
     int max = 0, max_j = 0;
+
     for (int j = 0; j < n; j++)
         if (a[i][j] > max)
         {
             max_j = j;
             max = a[i][j];
         }
+
     for (int j = 1; j < max_j; j++)
         if (a[i][j] != 0)
             max = 0;
 
     return max;
 }
+
 int max_col(int a[6][6], int j, int n)
 {
-    int max = 0, max_i = 0;;
+    int max = 0, max_i = 0;
+
     for (int i = 0; i < n; i++)
         if (a[i][j] > max)
         {
             max_i = i;
             max = a[i][j];
         }
-    for (int i = max_i; i > 0; i--)
+
+    for (int i = n; i > max_i; i--)
         if (a[i][j] != 0)
             max = 0;
 
     return max;
 }
-
