@@ -184,13 +184,14 @@ char teen48game(matrix_t matrix)
         }
     }
 
+    
     if (((flag_d == 1) && (score_d >= score_l)) || \
             ((flag_d == 0) && (score_d >= score_l) && (score_d != 0)))
         swipe = 'd';
     else if (((flag_d == 1) && (flag_l == 1) && (score_l > score_d)) || \
         ((flag_d == 0) && (flag_l == 1) && (score_d == 0)) || \
              ((flag_l == 0) && (flag_r == 1) && (score_l != 0)) || \
-             ((flag_l == flag_r) && (score_l == score_r)))
+             ((flag_l == flag_r) && (score_l == score_r) && (score_l != 0)))
         swipe = 'l';
     else if ((flag_d == 0) && (flag_l == 0) && (flag_r == 1))
         swipe = 'r';
@@ -199,6 +200,7 @@ char teen48game(matrix_t matrix)
 
     return swipe;
 }
+
 
 int main()
 {
