@@ -14,15 +14,6 @@ void trasform(int **a, int *buf, int n)
     }
 }
 
-void print(int m[6][6], int n)
-{
-    for (int i = 0; i < n; i ++)
-    {
-        for (int j = 0; j < n; j++)
-            printf("%d ", m[i][j]);
-        printf("\n");
-    }
-}
 int max_row(int a[6][6], int i, int n)
 {
     int max = 0, max_j = 0;
@@ -142,19 +133,6 @@ char teen48game(matrix_t matrix)
             }
         }
     }
-    printf("Down\n");
-    print(d, matrix.rows);
-    printf("%d\n\n", flag_d);
-    printf("Left\n");
-    print(l, matrix.rows);
-    printf("%d\n\n", flag_l);
-    printf("Right\n");
-    print(r, matrix.rows);
-    printf("%d\n\n", flag_r);
-    printf("Up\n");
-    print(u, matrix.rows);
-    printf("%d\n\n", flag_u);
-
 
     // score
     for (int i = matrix.rows - 1; i > 0; i--)
@@ -205,19 +183,6 @@ char teen48game(matrix_t matrix)
             }
         }
     }
-    printf("Down\n");
-    print(d, matrix.rows);
-    printf("%d\n\n", score_d);
-    printf("Left\n");
-    print(l, matrix.rows);
-    printf("%d\n\n", score_l);
-    printf("Right\n");
-    print(r, matrix.rows);
-    printf("%d\n\n", score_r);
-    printf("Up\n");
-    print(u, matrix.rows);
-    printf("%d\n\n", score_u);
-
 
     if (((flag_d == 1) && (score_d >= score_l)) || \
             ((flag_d == 0) && (score_d >= score_l) && (score_d != 0)))
@@ -228,7 +193,7 @@ char teen48game(matrix_t matrix)
         swipe = 'l';
     else if ((flag_d == 0) && (flag_l == 0) && (flag_r == 1))
         swipe = 'r';
-    else if ((flag_d == 0) && (flag_l == 0) && (flag_r == 0) && (flag_u == 0))
+    else if ((flag_d == 0) && (flag_l == 0) && (flag_r == 0) && (flag_u == 1))
         swipe = 'u';
 
     return swipe;
@@ -240,10 +205,10 @@ int main()
     matrix.rows = 4;
     matrix.columns = 4;
 
-    int a[4][4] = {{4,  0,  0, 2},
-                   {0,  0,  0,  4},
-                   {0,  4,  8,  2},
-                   {0, 64,  16,  8}};
+    int a[4][4] = {{0,0,0,0},
+                   {8,4,2,16},
+                   {16,8,4,2},
+                   {32,16,8,4}};
     int *d[4];
     trasform(d, *a, 4);
 
@@ -255,3 +220,5 @@ int main()
     printf("SWIPE %c", p);
     return 0;
 }
+
+
