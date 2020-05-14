@@ -66,7 +66,7 @@ char teen48game(matrix_t matrix)
     {
         int max_c = max_col(d, 0, matrix.rows);
         int max_r = max_row(d, matrix.rows - 1, matrix.rows);
-        if ((max_c != 0) && (max_c > max_r))
+        if ((max_c != 0) && (max_c >= max_r))
         {
             swipe = 'd';
             return swipe;
