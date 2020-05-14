@@ -23,7 +23,7 @@ int max_row(int a[6][6], int i, int n)
             max_j = j;
             max = a[i][j];
         }
-    for (int j = 0; j < max_j; j++)
+    for (int j = 1; j < max_j; j++)
         if (a[i][j] != 0)
             max = 0;
 
@@ -38,7 +38,7 @@ int max_col(int a[6][6], int j, int n)
             max_i = 0;
             max = a[i][j];
         }
-    for (int i = 0; i < max_i; i++)
+    for (int i = max_i - 1; i > 0; i--)
         if (a[i][j] != 0)
             max = 0;
 
