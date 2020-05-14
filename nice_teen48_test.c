@@ -126,6 +126,6 @@ int main(void)
         printf("Test 8 failed\n");
 
 
-    printf("%d/8 tests passed", correct);
+    printf("%d / 8 TESTS SUCCESSFUL\n", correct);
     return 0;
 }
