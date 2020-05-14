@@ -14,22 +14,52 @@ void trasform(int **a, int *buf, int n)
     }
 }
 
-void print(int m[4][4])
+void print(int m[6][6], int n)
 {
-    for (int i = 0; i < 4; i ++)
+    for (int i = 0; i < n; i ++)
     {
-        for (int j = 0; j < 4; j++)
-            printf("%d", m[i][j]);
+        for (int j = 0; j < n; j++)
+            printf("%d ", m[i][j]);
         printf("\n");
     }
 }
+int max_row(int a[6][6], int i, int n)
+{
+    int max = 0, max_j = 0;
+    for (int j = 0; j < n; j++)
+        if (a[i][j] > max)
+        {
+            max_j = j;
+            max = a[i][j];
+        }
+    for (int j = 0; j < max_j; j++)
+        if (a[i][j] != 0)
+            max = 0;
 
+    return max;
+}
+int max_col(int a[6][6], int j, int n)
+{
+    int max = 0, max_i = 0;;
+    for (int i = 0; i < n; i++)
+        if (a[i][j] > max)
+        {
+            max_i = 0;
+            max = a[i][j];
+        }
+    for (int i = 0; i < max_i; i++)
+        if (a[i][j] != 0)
+            max = 0;
+
+    return max;
+}
 char teen48game(matrix_t matrix)
 {
-    int d[4][4], l[4][4], r[4][4], u[4][4];
-    for (int i = 0; i < 4; i++)
+    char swipe = 0;
+    int d[6][6], l[6][6], r[6][6], u[6][6];
+    for (int i = 0; i < matrix.rows; i++)
     {
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < matrix.rows; j++)
         {
             d[i][j] = matrix.matrix[i][j];
             l[i][j] = matrix.matrix[i][j];
@@ -41,6 +71,21 @@ char teen48game(matrix_t matrix)
     int score_d = 0, score_l = 0, score_r = 0, score_u = 0;
     char flag_d = 0, flag_l = 0, flag_r = 0, flag_u = 0;
 
+    if (d[matrix.rows - 1][0] == 0)
+    {
+        int max_c = max_col(d, 0, matrix.rows);
+        int max_r = max_row(d, matrix.rows - 1, matrix.rows);
+        if ((max_c != 0) && (max_c > max_r))
+        {
+            swipe = 'd';
+            return swipe;
+        }
+        else if ((max_r != 0) && (max_r > max_c))
+        {
+            swipe = 'l';
+            return swipe;
+        }
+    }
     // turn
     for (int k = 0; k < matrix.rows; k++)
     {
@@ -97,13 +142,17 @@ char teen48game(matrix_t matrix)
             }
         }
     }
-    print(d);
+    printf("Down\n");
+    print(d, matrix.rows);
     printf("%d\n\n", flag_d);
-    print(l);
+    printf("Left\n");
+    print(l, matrix.rows);
     printf("%d\n\n", flag_l);
-    print(r);
+    printf("Right\n");
+    print(r, matrix.rows);
     printf("%d\n\n", flag_r);
-    print(u);
+    printf("Up\n");
+    print(u, matrix.rows);
     printf("%d\n\n", flag_u);
 
 
@@ -156,18 +205,33 @@ char teen48game(matrix_t matrix)
             }
         }
     }
-
-    print(d);
+    printf("Down\n");
+    print(d, matrix.rows);
     printf("%d\n\n", score_d);
-    print(l);
+    printf("Left\n");
+    print(l, matrix.rows);
     printf("%d\n\n", score_l);
-    print(r);
+    printf("Right\n");
+    print(r, matrix.rows);
     printf("%d\n\n", score_r);
-    print(u);
+    printf("Up\n");
+    print(u, matrix.rows);
     printf("%d\n\n", score_u);
 
 
-    return 0;
+    if (((flag_d == 1) && (score_d >= score_l)) || \
+            ((flag_d == 0) && (score_d >= score_l) && (score_d != 0)))
+        swipe = 'd';
+    else if (((flag_d == 1) && (flag_l == 1) && (score_l > score_d)) || \
+        ((flag_d == 0) && (flag_l == 1) && (score_d == 0)) || \
+             ((flag_l == 0) && (flag_r == 1) && (score_l != 0)))
+        swipe = 'l';
+    else if ((flag_d == 0) && (flag_l == 0) && (flag_r == 1))
+        swipe = 'r';
+    else if ((flag_d == 0) && (flag_l == 0) && (flag_r == 0) && (flag_u == 0))
+        swipe = 'u';
+
+    return swipe;
 }
 
 int main()
@@ -176,14 +240,18 @@ int main()
     matrix.rows = 4;
     matrix.columns = 4;
 
-    int a[4][4] = {{2,0,0,0},{2,0,0,4},{0,2,0,0},{0,0,0,0}};
+    int a[4][4] = {{4,  0,  0, 2},
+                   {0,  0,  0,  4},
+                   {0,  4,  8,  2},
+                   {0, 64,  16,  8}};
     int *d[4];
     trasform(d, *a, 4);
 
 
     matrix.matrix = d;
 
-    teen48game(matrix);
+    char p = teen48game(matrix);
 
+    printf("SWIPE %c", p);
     return 0;
 }
