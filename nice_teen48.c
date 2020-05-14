@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "nice_teen48.h"
 
 int max_row(int a[6][6], int i, int n);
 int max_col(int a[6][6], int j, int n);
