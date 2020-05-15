@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "nice_split.h"
+#include "nice_strtok.h"
 
 void trasform(char **a, char *buf, int n)
 {
@@ -18,6 +18,7 @@ int main(void)
     const char str_test_3[] = "   tes     ";
     const char str_test_4[] = "???";
     const char str_test_5[] = "";
+    const char str_test_6[] = "    l";
 
     char d[5][5] = { 0 };
     char *matrix[5];
@@ -39,7 +40,7 @@ int main(void)
         printf("Test 2 failed\n");
 
     //Test3 with only one word and separator ' '
-    if (split(str_test_3, matrix, 'l') == 3 &&
+    if (split(str_test_3, matrix, ' ') == 1 &&
             matrix[0][0] == 't' && matrix[0][1] == 'e' && matrix[0][2] == 's' && matrix[0][3] == '\0')
         correct++;
     else
@@ -57,7 +58,13 @@ int main(void)
     else
         printf("Test 5 failed\n");
 
-    printf("%d / 5 TESTS SUCCESSFUL\n", correct);
+    //Test6 with string ending by non-separator
+    if (split(str_test_6, matrix, ' ') == 1 && matrix[0][0] == 'l')
+        correct++;
+    else
+        printf("Test 6 failed\n");
+
+    printf("%d / 6 TESTS SUCCESSFUL\n", correct);
 
     return 0;
 }
