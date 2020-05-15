@@ -24,6 +24,5 @@ int split(const char *string, char **matrix, const char symbol)
     if ((string[i - 1] != symbol) && (i != 0))
         number++;
 
-
     return number;
 }
