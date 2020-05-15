@@ -46,5 +46,5 @@ int main(void)
 
     printf("%d / 7 TESTS SUCCESSFUL\n", successful_tests);
 
-        return 0;
+    return 0;
 }
