@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "nice_strtok.h"
+#include "nice_split.h"
 
 void trasform(char **a, char *buf, int n)
 {
