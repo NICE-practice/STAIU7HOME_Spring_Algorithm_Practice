@@ -12,6 +12,7 @@ int main(void)
     char str_test_1[] = "   Iu7game..,developers are??,\nthe\nbest!!!!";
     int check_pword_1[] = { 3, 13, 24, 31, 35};
     check_i = 0;
+    
     pword = strtok(str_test_1, delim);
     while (pword)
     {
@@ -26,7 +27,9 @@ int main(void)
 
     // Test 2
     char str_test_2[] = "\n   \n....\n,,,,\n?.!";
+    
     pword = strtok(str_test_2, delim);
+    
     if (pword == NULL)
         successful_tests++;
     else
@@ -34,6 +37,7 @@ int main(void)
 
     // Test 3
     char str_test_3[] = "";
+    
     pword = strtok(str_test_3, delim);
     if (pword == NULL)
         successful_tests++;
