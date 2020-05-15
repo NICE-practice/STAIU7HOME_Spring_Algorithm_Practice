@@ -29,7 +29,6 @@ int main(void)
     char str_test_2[] = "\n   \n....\n,,,,\n?.!";
     
     pword = strtok(str_test_2, delim);
-    
     if (pword == NULL)
         successful_tests++;
     else
