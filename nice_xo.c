@@ -74,7 +74,7 @@ int xogame(char **bf, const int field_size, const char symb)
                 if (arr[4] == -1)
                     return 0;
                 else
-                    return 4;
+                    return 1;
             }
             if (enemys_marks == 2)
             {
@@ -175,6 +175,9 @@ int xogame(char **bf, const int field_size, const char symb)
             if (enemys_marks == 4)
             {
                 result = first_check(arr, field_size, 1);
+                if (result >= 0)
+                    return result;
+                result = first_check(arr, field_size, -1);
                 if (result >= 0)
                     return result;
                 //ценртальный столбец
