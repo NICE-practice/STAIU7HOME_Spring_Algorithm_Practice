@@ -10,7 +10,7 @@ void trasform(char **a, char *buf, int n)
 
 int main(void)
 {
-    // XOgame 5x5
+    // XOgame 3x3
     int successful_tests = 0;
 
     // test 3x3 first
@@ -181,10 +181,10 @@ int main(void)
     // tsst 16 3x3
     test_3x3_2[1][1] = 'O';
     test_3x3_2[1][2] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 6)
+    if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
-        printf("TEST 3x3 16 FAILED\n");
+        printf("TEST 3x3 16 FAILED %d\n", xogame(p_test_3x3_2, 3, 'O'));
 
     // test 17 3x3
     test_3x3_2[2][0] = 'O';
@@ -217,10 +217,10 @@ int main(void)
     // test 20 3x3
     test_3x3_2[0][0] = 'O';
     test_3x3_2[2][2] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 1)
+    if (xogame(p_test_3x3_2, 3, 'O') == 6)
         successful_tests++;
     else
-        printf("TEST 3x3 20 FAILED\n");
+        printf("TEST 3x3 20 FAILED %d\n",xogame(p_test_3x3_2, 3, 'O') );
 
     // test 21 3x3
     test_3x3_2[2][0] = 'O';
@@ -316,7 +316,6 @@ int main(void)
 
     // test 31 3x3
     test_3x3_2[0][0] = 'X';
-    for (int i = 0; i < 3; i++)
     if (xogame(p_test_3x3_2, 3, 'O') == 4)
         successful_tests++;
     else
@@ -330,6 +329,18 @@ int main(void)
     else
         printf("TEST 3x3 32 FAILED");
 
+    // new game
+    // test 33 3x3
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            test_3x3_2[i][j] = ' ';
+    test_3x3_2[2][2] = 'X';
+    test_3x3_2[1][1] = 'O';
+    test_3x3_2[0][0] = 'X';
+   if (xogame(p_test_3x3_2, 3, 'O') == 1)
+        successful_tests++;
+    else
+        printf("TEST 3x3 33 FAILED\n");
 
     // XOgame 5x5
     int successful_tests1 = 0;
@@ -1183,7 +1194,7 @@ int main(void)
         printf("TEST 5x5 81 FAILED %d\n", xogame(p_test_5x5_1, 5, 'O'));
 
 
-    printf("%d / 32 TESTS 3x3 SUCCESSFUL\n", successful_tests);
+    printf("%d / 33 TESTS 3x3 SUCCESSFUL\n", successful_tests);
     printf("%d / 81 TESTS 5x5 SUCCESSFUL\n", successful_tests1);
     return 0;
 }
