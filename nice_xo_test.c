@@ -173,7 +173,7 @@ int main(void)
 
     // test 15 3x3
     test_3x3_2[1][0] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 1)
+    if (xogame(p_test_3x3_2, 3, 'O') == 4)
         successful_tests++;
     else
         printf("TEST 3x3 15 FAILED\n");
@@ -217,7 +217,7 @@ int main(void)
     // test 20 3x3
     test_3x3_2[0][0] = 'O';
     test_3x3_2[2][2] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 6)
+    if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
         printf("TEST 3x3 20 FAILED\n");
@@ -280,7 +280,7 @@ int main(void)
 
     // test 27 3x3
     test_3x3_2[0][0] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 1)
+    if (xogame(p_test_3x3_2, 3, 'O') == 4)
         successful_tests++;
     else
         printf("TEST 3x3 27 FAILED\n");
@@ -316,7 +316,8 @@ int main(void)
 
     // test 31 3x3
     test_3x3_2[0][0] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 1)
+    for (int i = 0; i < 3; i++)
+    if (xogame(p_test_3x3_2, 3, 'O') == 4)
         successful_tests++;
     else
         printf("TEST 3x3 31 FAILED\n");
@@ -1186,4 +1187,3 @@ int main(void)
     printf("%d / 81 TESTS 5x5 SUCCESSFUL\n", successful_tests1);
     return 0;
 }
-
