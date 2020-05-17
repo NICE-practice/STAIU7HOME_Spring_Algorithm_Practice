@@ -173,7 +173,7 @@ int main(void)
 
     // test 15 3x3
     test_3x3_2[1][0] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 4)
+    if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
         printf("TEST 3x3 15 FAILED\n");
@@ -280,7 +280,7 @@ int main(void)
 
     // test 27 3x3
     test_3x3_2[0][0] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 4)
+    if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
         printf("TEST 3x3 27 FAILED\n");
@@ -316,7 +316,7 @@ int main(void)
 
     // test 31 3x3
     test_3x3_2[0][0] = 'X';
-    if (xogame(p_test_3x3_2, 3, 'O') == 4)
+    if (xogame(p_test_3x3_2, 3, 'O') == 1)
         successful_tests++;
     else
         printf("TEST 3x3 31 FAILED\n");
@@ -636,7 +636,7 @@ int main(void)
     // test 5x5 33
     test_5x5_1[1][2] = 'X';
     test_5x5_1[2][0] = 'O';
-    if (xogame(p_test_5x5_1, 5, 'X') == 17)
+    if (xogame(p_test_5x5_1, 5, 'X') == 15)
         successful_tests1++;
     else
         printf("TEST 5x5 33 FAILED\n");
@@ -1020,8 +1020,6 @@ int main(void)
         successful_tests1++;
     else
         printf("TEST 5x5 71 FAILED\n");
-    
-    // new game
     for (int i = 0; i < 5; i++)
         for (int j = 0; j < 5; j++)
             test_5x5_2[i][j] = ' ';
@@ -1163,7 +1161,29 @@ int main(void)
     else
         printf("TEST 5x5 80 FAILED\n");
 
+    // test 5x5 80
+    // new game
+    for (int i = 0; i < 5; i++)
+        for (int j = 0; j < 5; j++)
+            test_5x5_1[i][j] = ' ';
+
+    // test 5x5 81
+    test_5x5_1[2][2] = 'X';
+    test_5x5_1[0][0] = 'O';
+    test_5x5_1[0][4] = 'X';
+    test_5x5_1[4][1] = 'O';
+    test_5x5_1[0][2] = 'X';
+    test_5x5_1[1][0] = 'O';
+    test_5x5_1[1][2] = 'X';
+    test_5x5_1[2][0] = 'O';
+    if (xogame(p_test_5x5_1, 5, 'X') == 17)
+        successful_tests1++;
+    else
+        printf("TEST 5x5 81 FAILED %d\n", xogame(p_test_5x5_1, 5, 'O'));
+
+
     printf("%d / 32 TESTS 3x3 SUCCESSFUL\n", successful_tests);
-    printf("%d / 80 TESTS 5x5 SUCCESSFUL\n", successful_tests1);
+    printf("%d / 81 TESTS 5x5 SUCCESSFUL\n", successful_tests1);
     return 0;
 }
+
