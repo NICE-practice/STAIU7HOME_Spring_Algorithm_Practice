@@ -81,9 +81,9 @@ int xogame(char **bf, const int field_size, const char symb)
                 if (arr[4] == -1)
                 {
                     for (int i = 1; i < 8; i++)
-                        if ((arr[i] == -1) && (i != 4) && (i != 2))
+                        if ((arr[i] == -1) && (i != 4))
                             return (8 - i);
-                    return 1;
+                    return 6;
 
                 }
                 else
@@ -92,8 +92,8 @@ int xogame(char **bf, const int field_size, const char symb)
                     result = first_check(arr, field_size, -1);
                     if (result >= 0)
                         return result;
-                    //крестики только по бокам
-                    return 6;
+                    //крестики только по углам
+                    return 1;
                 }
             }
             else
