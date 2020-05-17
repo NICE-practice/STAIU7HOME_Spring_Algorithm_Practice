@@ -74,7 +74,7 @@ int xogame(char **bf, const int field_size, const char symb)
                 if (arr[4] == -1)
                     return 0;
                 else
-                    return 1;
+                    return 4;
             }
             if (enemys_marks == 2)
             {
@@ -83,7 +83,7 @@ int xogame(char **bf, const int field_size, const char symb)
                     for (int i = 1; i < 8; i++)
                         if ((arr[i] == -1) && (i != 4))
                             return (8 - i);
-                    return 6;
+                    return 1;
 
                 }
                 else
