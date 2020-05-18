@@ -12,8 +12,9 @@ int split(const char *string, char **matrix, const char symbol)
             matrix[number][k] = string[i];
             k++;
         }
-        else if ((string[i] == symbol) && (string[i - 1] != symbol) && (i != 0))
+        else if ((string[i] == symbol) && (i != 0) && (string[i - 1] != symbol))
         {
+            matrix[number][k] = '\0';
             number++;
             k = 0;
         }
