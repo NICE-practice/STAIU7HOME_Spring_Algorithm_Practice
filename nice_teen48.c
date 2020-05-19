@@ -127,7 +127,7 @@ char teen48game(matrix_t matrix)
     }
     for (int i = 0; i < size; i++)
     {
-        for (int j = size; j > 0; j--)
+        for (int j = size - 1; j > 0; j--)
         {
             if (r[i][j] == r[i][j - 1])
             {
@@ -165,40 +165,4 @@ char teen48game(matrix_t matrix)
         swipe = 'u';
 
     return swipe;
-}
-
-int max_row(int a[6][6], int i, int n)
-{
-    int max = 0, max_j = 0;
-
-    for (int j = 0; j < n; j++)
-        if (a[i][j] > max)
-        {
-            max_j = j;
-            max = a[i][j];
-        }
-
-    for (int j = 1; j < max_j; j++)
-        if (a[i][j] != 0)
-            max = 0;
-
-    return max;
-}
-
-int max_col(int a[6][6], int j, int n)
-{
-    int max = 0, max_i = 0;
-
-    for (int i = 0; i < n; i++)
-        if (a[i][j] > max)
-        {
-            max_i = i;
-            max = a[i][j];
-        }
-
-    for (int i = n; i > max_i; i--)
-        if (a[i][j] != 0)
-            max = 0;
-
-    return max;
 }
