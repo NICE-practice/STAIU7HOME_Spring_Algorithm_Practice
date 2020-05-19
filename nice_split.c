@@ -21,6 +21,7 @@ int split(const char *string, char **matrix, const char symbol)
 
         i++;
     }
+    matrix[number][k] = '\0';
 
     if ((string[i - 1] != symbol) && (i != 0))
         number++;
