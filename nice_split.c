@@ -19,7 +19,7 @@ int split(const char *string, char **matrix, const char symbol)
 
         i++;
     }
-    matrix[number][k] = '\0';
+    matrix[number][col] = '\0';
 
     return number++;
 }
