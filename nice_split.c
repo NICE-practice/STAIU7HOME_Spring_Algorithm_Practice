@@ -9,17 +9,17 @@ int split(const char *string, char **matrix, const char symbol)
     {
         if (string[i] == symbol)
         {
-            matrix[number][col] = '\0';
+            matrix[number++][col] = '\0';
             col = 0;
         }
-        else 
+        else
         {
-            matrix[number][col] = string[i];
+            matrix[number][col++] = string[i];
         }
 
         i++;
     }
     matrix[number][col] = '\0';
 
-    return number++;
+    return number + 1;
 }
