@@ -3,28 +3,23 @@
 int split(const char *string, char **matrix, const char symbol)
 {
     int number = 0;
-    int i = 0, k = 0;
+    int i = 0, col = 0;
 
     while (string[i])
     {
-        if (string[i] != symbol)
+        if (string[i] == symbol)
         {
-            matrix[number][k] = string[i];
-            k++;
+            matrix[number][col] = '\0';
+            col = 0;
         }
-        else if ((string[i] == symbol) && (i != 0) && (string[i - 1] != symbol))
+        else 
         {
-            matrix[number][k] = '\0';
-            number++;
-            k = 0;
+            matrix[number][col] = string[i];
         }
 
         i++;
     }
     matrix[number][k] = '\0';
 
-    if ((string[i - 1] != symbol) && (i != 0))
-        number++;
-
-    return number;
+    return number++;
 }
