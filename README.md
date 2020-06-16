@@ -19,9 +19,9 @@
 + [XOgame_bag](https://github.com/NICE-practice/STAIU7HOME_Spring_Algorithm_Practice/wiki/XOgame_bag)
 
 ## STRgame
-+ [STRgame_doc](https://github.com/NICE-practice/STAIU7HOME_Spring_Algorithm_Practice/wiki/NUM63RSgame_bag)
++ [STRgame_doc](https://github.com/NICE-practice/STAIU7HOME_Spring_Algorithm_Practice/wiki/STRgame_doc)
 
-+ [STRgame_bag](STRgame_bag)
++ [STRgame_bag](https://github.com/NICE-practice/STAIU7HOME_Spring_Algorithm_Practice/wiki/STRgame_bag)
 
 ## TEEN48game
 + [TEEN48game_doc](https://github.com/NICE-practice/STAIU7HOME_Spring_Algorithm_Practice/wiki/TEEN48game_doc)
